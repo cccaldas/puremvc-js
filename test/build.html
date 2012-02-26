@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>build</title>
+	<meta name="author" content="Cristiano Caldas">
+	<!-- Date: 2012-02-26 -->
+	<script type="text/javascript" charset="utf-8" src="../bin/puremvc.1.0.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		
+		assert(typeof(Facade) == "function", "Facade is not a defined!");
+		assert(typeof(SimpleCommand) == "function", "Facade is not a defined!");
+		
+		//console.log(typeof(Test));
+		//assertInstanceOf('TestClass is a constructor', Function, Facade);
+		//console.log(Facade == Function);
+		
+		//ins
+		
+		function assert(expression, description) {
+			if(!expression)
+				throw "assert failed: " + description;
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

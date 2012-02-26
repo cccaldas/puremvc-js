@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+
+<?php
+	$build_file 	= "puremvc.1.0.js";
+	$src 			= "../src/";
+	$lib 			= "../lib/";
+	
+	$files			= array();
+	$build_content 	= "";
+	
+	array_push($files, $src."org/puremvc/js/multicore/core/Controller.js");
+	array_push($files, $src."org/puremvc/js/multicore/core/Model.js");
+	array_push($files, $src."org/puremvc/js/multicore/core/View.js");
+	array_push($files, $src."org/puremvc/js/multicore/help/define.js");
+	
+	array_push($files, $src."org/puremvc/js/multicore/patterns/command/MacroCommand.js");
+	array_push($files, $src."org/puremvc/js/multicore/patterns/command/SimpleCommand.js");
+	array_push($files, $src."org/puremvc/js/multicore/patterns/facade/Facade.js");
+	array_push($files, $src."org/puremvc/js/multicore/patterns/mediator/Mediator.js");
+	array_push($files, $src."org/puremvc/js/multicore/patterns/observer/Notification.js");
+	array_push($files, $src."org/puremvc/js/multicore/patterns/observer/Notifier.js");
+	array_push($files, $src."org/puremvc/js/multicore/patterns/observer/Observer.js");
+	array_push($files, $src."org/puremvc/js/multicore/patterns/proxy/Proxy.js");
+	
+	foreach ($files as $key => $file) {
+		$build_content = $build_content.file_get_contents($file);
+	}
+	
+	shell_exec("> ".$build_file);
+	file_put_contents($build_file, $build_content);
+	
+	//compress
+	shell_exec("java -jar /Users/cccaldas/Bash/lib/yuicompressor-2.4.7/build/yuicompressor-2.4.7.jar -o ".$build_file." ".$build_file);
+	
+	echo "build complete!";
+?>
